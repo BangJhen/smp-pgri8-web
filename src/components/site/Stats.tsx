@@ -93,7 +93,7 @@ const Stats = () => (
                 Sinkron
               </span>
             </div>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={chartData.length * 52}>
               <BarChart data={chartData} layout="vertical" margin={{ top: 0, right: 20, bottom: 0, left: 10 }}>
                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
                 <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} width={50} />
@@ -101,7 +101,7 @@ const Stats = () => (
                   contentStyle={{ borderRadius: '12px', border: '1px solid hsl(var(--border))', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                   cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
                 />
-                <Bar dataKey="value" radius={[0, 6, 6, 0]} barSize={24}>
+                <Bar dataKey="value" radius={[0, 6, 6, 0]} barSize={28}>
                   {chartData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}

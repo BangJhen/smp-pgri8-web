@@ -1,28 +1,28 @@
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero-students.jpg";
+import heroImg from "@/assets/gambar-sekolah.jpg";
 
 const Hero = () => {
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const y = useTransform(scrollY, [0, 500], [0, 100]);
 
   const titleWords = ["Bangun", "Masa Depan", "Bersama Kami"];
 
   return (
-    <section id="beranda" className="relative overflow-hidden">
+    <section id="beranda" className="relative overflow-hidden" style={{ aspectRatio: "16/9", minHeight: "480px", maxHeight: "90vh" }}>
       <motion.div className="absolute inset-0" style={{ y }}>
         <img
           src={heroImg}
-          alt="Siswa SMP PGRI 8 Bogor"
-          className="w-full h-full object-cover"
-          width={1600}
-          height={1100}
+          alt="Gedung SMP PGRI 8 Bogor"
+          className="w-full h-full object-cover object-center"
+          width={1440}
+          height={810}
         />
         <div className="absolute inset-0 bg-gradient-hero" />
       </motion.div>
 
-      <div className="relative container-eduka py-28 md:py-40 lg:py-48">
+      <div className="relative container-eduka h-full flex items-center py-16 md:py-20">
         <div className="max-w-2xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ const Hero = () => {
             SMP PGRI 8 — Kota Bogor
           </motion.p>
 
-          <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-extrabold text-white leading-[1.0] tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
             {titleWords.map((word, i) => (
               <motion.span
                 key={i}
@@ -51,7 +51,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-7 text-white/70 text-base md:text-lg max-w-md leading-relaxed"
+            className="mt-6 text-white/70 text-base md:text-lg max-w-md leading-relaxed"
           >
             Sekolah menengah pertama modern di Kota Bogor yang mencetak generasi
             cerdas, berkarakter, dan siap menghadapi era digital.
@@ -61,7 +61,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-3"
           >
             <Button variant="hero" size="xl" asChild className="hover:scale-105 transition-transform">
               <a href="/ppdb">
