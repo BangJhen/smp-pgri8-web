@@ -1,30 +1,38 @@
-import { GraduationCap, Users, BookOpen, Trophy } from "lucide-react";
 import facilityImg from "@/assets/facility-building.jpg";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const stats = [
-  { icon: GraduationCap, value: "850+", label: "Total Siswa" },
-  { icon: Users, value: "45", label: "Guru & Staff" },
-  { icon: BookOpen, value: "32", label: "Program Belajar" },
-  { icon: Trophy, value: "120+", label: "Penghargaan" },
+  { value: 850, suffix: "+", label: "Siswa Aktif", desc: "Terdaftar tahun ajaran 2025/2026" },
+  { value: 45, suffix: "", label: "Guru & Staff", desc: "Tersertifikasi & berpengalaman" },
+  { value: 32, suffix: "", label: "Program Belajar", desc: "Kurikuler & ekstrakurikuler" },
+  { value: 120, suffix: "+", label: "Penghargaan", desc: "Tingkat kota, provinsi & nasional" },
 ];
 
 const Stats = () => (
-  <section className="relative section-pad overflow-hidden">
+  <section className="relative overflow-hidden">
     <div className="absolute inset-0">
       <img src={facilityImg} alt="" className="w-full h-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-stats opacity-95" />
+      <div className="absolute inset-0 bg-gradient-stats opacity-97" />
     </div>
 
-    <div className="relative container-eduka">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
-        {stats.map((s) => (
-          <div key={s.label} className="text-center text-primary-foreground">
-            <div className="mx-auto h-20 w-20 rounded-2xl bg-accent grid place-items-center shadow-accent mb-5 rotate-3 hover:rotate-0 transition-bounce">
-              <s.icon className="h-9 w-9 text-accent-foreground" />
+    <div className="relative container-eduka py-20 md:py-28">
+      <ScrollReveal animation="fade">
+        <p className="text-white/50 text-xs font-semibold tracking-[0.2em] uppercase mb-12 text-center">
+          Angka yang Bicara
+        </p>
+      </ScrollReveal>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 divide-x divide-white/10">
+        {stats.map((s, idx) => (
+          <ScrollReveal key={s.label} animation="slide-up" delay={idx * 100}>
+            <div className="px-6 lg:px-10 first:pl-0 last:pr-0">
+              <div className="font-display font-extrabold text-5xl md:text-6xl text-white">
+                <AnimatedCounter end={s.value} suffix={s.suffix} duration={2000} />
+              </div>
+              <div className="mt-2 font-semibold text-white/90 text-sm">{s.label}</div>
+              <div className="mt-1 text-white/55 text-xs">{s.desc}</div>
             </div>
-            <div className="font-display font-extrabold text-4xl md:text-5xl">{s.value}</div>
-            <div className="mt-1 text-sm md:text-base text-white/85 font-medium">{s.label}</div>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>
