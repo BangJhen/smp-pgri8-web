@@ -1,4 +1,4 @@
-import { GraduationCap, Facebook, Instagram, Youtube, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => (
   <footer className="bg-surface-dark text-surface-dark-foreground">
@@ -6,9 +6,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <div className="flex items-center gap-2.5 mb-5">
-            <div className="h-12 w-12 rounded-xl bg-gradient-accent grid place-items-center shadow-accent">
-              <GraduationCap className="h-6 w-6 text-accent-foreground" />
-            </div>
+            <img src="/logo-smp-pgri8.svg" alt="Logo SMP PGRI 8" className="h-12 w-auto" />
             <div className="leading-tight">
               <div className="font-display font-extrabold text-lg">SMP PGRI 8</div>
               <div className="text-xs opacity-75">Kota Bogor</div>
