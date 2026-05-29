@@ -3,9 +3,9 @@ import { Calendar, ChevronRight, ChevronLeft } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import news1 from "@/assets/news-1.jpg";
-import news2 from "@/assets/news-2.jpg";
-import news3 from "@/assets/news-3.jpg";
+import news1 from "@/assets/images/news/news-1.jpg";
+import news2 from "@/assets/images/news/news-2.jpg";
+import news3 from "@/assets/images/news/news-3.jpg";
 
 const news = [
   { img: news1, cat: "Olahraga", date: "12 April 2026", title: "Tim Basket SMP PGRI 8 Juara 1 POPDA Tingkat Kota", excerpt: "Setelah berjuang keras selama turnamen, tim basket putra berhasil meraih gelar juara pertama dalam ajang POPDA tingkat Kota Bogor." },

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import news1 from "@/assets/news-1.jpg";
-import news2 from "@/assets/news-2.jpg";
-import news3 from "@/assets/news-3.jpg";
-import lib from "@/assets/facility-library.jpg";
-import lab from "@/assets/facility-lab.jpg";
-import building from "@/assets/facility-building.jpg";
+import news1 from "@/assets/images/news/news-1.jpg";
+import news2 from "@/assets/images/news/news-2.jpg";
+import news3 from "@/assets/images/news/news-3.jpg";
+import lib from "@/assets/images/facilities/facility-library.jpg";
+import lab from "@/assets/images/facilities/facility-lab.jpg";
+import building from "@/assets/images/facilities/facility-building.jpg";
 import { Lightbox } from "@/components/ui/lightbox";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 

@@ -4,9 +4,9 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Lightbox } from "@/components/ui/lightbox";
-import libraryImg from "@/assets/facility-library.jpg";
-import labImg from "@/assets/facility-lab.jpg";
-import buildingImg from "@/assets/facility-building.jpg";
+import libraryImg from "@/assets/images/facilities/facility-library.jpg";
+import labImg from "@/assets/images/facilities/facility-lab.jpg";
+import buildingImg from "@/assets/images/facilities/facility-building.jpg";
 
 const carouselImages = [
   { src: buildingImg, label: "Gedung Utama" },

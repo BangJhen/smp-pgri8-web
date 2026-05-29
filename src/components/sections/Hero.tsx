@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/gambar-sekolah.jpg";
+import heroImg from "@/assets/images/school/gambar-sekolah.jpg";
 
 const Hero = () => {
   const { scrollY } = useScroll();

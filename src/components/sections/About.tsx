@@ -1,7 +1,7 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aboutImg from "@/assets/about-teacher.jpg";
-import facilityImg from "@/assets/facility-building.jpg";
+import aboutImg from "@/assets/images/about/about-teacher.jpg";
+import facilityImg from "@/assets/images/facilities/facility-building.jpg";
 
 const sellingPoints = [
   { no: "01", title: "Beasiswa Prestasi", desc: "Beragam beasiswa untuk siswa berprestasi akademik & non-akademik." },
