@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle2, ClipboardList, Loader2, ShieldCheck, Sparkles } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/services/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/use-toast";
 
 const schema = z.object({
   nama_lengkap: z.string().trim().min(3, "Nama minimal 3 karakter").max(120),
@@ -85,7 +85,7 @@ const PPDBForm = () => {
             </span>
             <h2 className="mt-3 text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
               Daftar Jadi Bagian dari{" "}
-              <span className="text-primary">Keluarga SMP PGRI 8</span>
+              <span className="text-foreground">Keluarga SMP PGRI 8</span>
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Isi formulir pendaftaran online di samping. Tim kami akan menghubungi Anda

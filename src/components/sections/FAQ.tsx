@@ -43,7 +43,7 @@ const FAQ = () => (
             <p className="text-accent font-semibold text-sm uppercase tracking-wider">FAQ</p>
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
               Pertanyaan yang<br />
-              <span className="text-primary">Sering Ditanyakan</span>
+              <span className="text-foreground">Sering Ditanyakan</span>
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Temukan jawaban atas pertanyaan umum seputar pendaftaran, biaya, fasilitas, dan kegiatan di SMP PGRI 8 Kota Bogor.

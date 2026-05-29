@@ -31,8 +31,8 @@ const Stats = () => (
             Update Data Otomatis
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
-            STATISTIK <span className="text-primary">SMP PGRI 8</span><br />
-            <span className="text-primary">BOGOR</span>
+            STATISTIK <span className="text-foreground">SMP PGRI 8</span><br />
+            <span className="text-foreground">BOGOR</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg">
             Informasi jumlah siswa dan tenaga pendidik yang diperbarui secara sistematis untuk transparansi publik.
@@ -88,13 +88,9 @@ const Stats = () => (
                 <h3 className="font-display font-bold text-lg text-foreground">Distribusi Warga Sekolah</h3>
                 <p className="text-sm text-muted-foreground mt-1">Komposisi berdasarkan tingkatan dan divisi</p>
               </div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary-soft text-primary text-xs font-semibold">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                Sinkron
-              </span>
             </div>
-            <ResponsiveContainer width="100%" height={chartData.length * 52}>
-              <BarChart data={chartData} layout="vertical" margin={{ top: 0, right: 20, bottom: 0, left: 10 }}>
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart data={chartData} layout="vertical" margin={{ top: 10, right: 20, bottom: 10, left: 50 }}>
                 <XAxis type="number" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} />
                 <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }} width={50} />
                 <Tooltip

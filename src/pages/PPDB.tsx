@@ -1,8 +1,8 @@
-import TopBar from "@/components/site/TopBar";
-import Navbar from "@/components/site/Navbar";
-import PPDBForm from "@/components/site/PPDBForm";
-import Footer from "@/components/site/Footer";
-import { ArrowLeft, Calendar, FileText, Users } from "lucide-react";
+import TopBar from "@/components/layout/TopBar";
+import PPDBNavbar from "@/components/layout/PPDBNavbar";
+import PPDBForm from "@/components/forms/PPDBForm";
+import Footer from "@/components/layout/Footer";
+import { Calendar, FileText, Users } from "lucide-react";
 
 const steps = [
   { no: "01", title: "Isi Formulir Online", desc: "Lengkapi data diri dan keluarga secara online." },
@@ -24,15 +24,12 @@ const PPDB = () => {
   return (
     <main className="min-h-screen bg-background">
       <TopBar />
-      <Navbar />
+      <PPDBNavbar />
 
-      {/* Page Hero */}
-      <section className="bg-gradient-to-br from-primary to-primary-deep text-primary-foreground py-14 md:py-20">
-        <div className="container-eduka">
-          <a href="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors">
-            <ArrowLeft className="h-4 w-4" /> Kembali ke Beranda
-          </a>
-          <div className="flex items-center gap-2 mb-3">
+       {/* Page Hero */}
+       <section className="bg-gradient-to-br from-primary to-primary-deep text-primary-foreground py-14 md:py-20">
+         <div className="container-eduka">
+           <div className="flex items-center gap-2 mb-3">
             <span className="px-3 py-1 rounded-full bg-accent text-white text-xs font-bold uppercase">
               PPDB 2026/2027
             </span>

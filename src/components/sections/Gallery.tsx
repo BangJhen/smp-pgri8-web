@@ -48,7 +48,7 @@ const Gallery = () => {
           <div className="text-center max-w-2xl mx-auto mb-8">
             <p className="text-accent font-semibold text-sm uppercase tracking-wider">Galeri Sekolah</p>
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
-              Momen <span className="text-primary">Berharga</span> Kami
+              Momen Berharga Kami
             </h2>
           </div>
         </ScrollReveal>

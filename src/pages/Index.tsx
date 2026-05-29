@@ -1,14 +1,14 @@
-import TopBar from "@/components/site/TopBar";
-import Navbar from "@/components/site/Navbar";
-import Hero from "@/components/site/Hero";
-import About from "@/components/site/About";
-import Stats from "@/components/site/Stats";
-import Facilities from "@/components/site/Facilities";
-import News from "@/components/site/News";
-import Gallery from "@/components/site/Gallery";
-import FAQ from "@/components/site/FAQ";
-import Contact from "@/components/site/Contact";
-import Footer from "@/components/site/Footer";
+import TopBar from "@/components/layout/TopBar";
+import Navbar from "@/components/layout/Navbar";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Stats from "@/components/sections/Stats";
+import Facilities from "@/components/sections/Facilities";
+import News from "@/components/sections/News";
+import Gallery from "@/components/sections/Gallery";
+import FAQ from "@/components/sections/FAQ";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/layout/Footer";
 
 const Index = () => {
   return (

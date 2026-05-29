@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,8 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const isPPDBPage = location.pathname === "/ppdb";
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border shadow-soft">
       <div className="container-eduka flex items-center justify-between h-20">
@@ -36,9 +39,11 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="cta" size="lg" asChild>
-            <a href="/ppdb">Daftar PPDB</a>
-          </Button>
+          {!isPPDBPage && (
+            <Button variant="cta" size="lg" asChild>
+              <a href="/ppdb">Daftar PPDB</a>
+            </Button>
+          )}
         </div>
 
         <button className="lg:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
@@ -57,9 +62,11 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <Button variant="cta" size="lg" className="mt-2" asChild>
-            <a href="/ppdb" onClick={() => setOpen(false)}>Daftar PPDB</a>
-          </Button>
+          {!isPPDBPage && (
+            <Button variant="cta" size="lg" className="mt-2" asChild>
+              <a href="/ppdb" onClick={() => setOpen(false)}>Daftar PPDB</a>
+            </Button>
+          )}
         </nav>
       </div>
     </header>

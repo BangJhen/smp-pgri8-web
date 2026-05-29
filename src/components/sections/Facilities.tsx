@@ -53,7 +53,7 @@ const Facilities = () => {
             <p className="text-accent font-semibold text-sm uppercase tracking-wider">Fasilitas Sekolah</p>
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
               Lengkap untuk<br />
-              <span className="text-primary">Tumbuh Bersama</span>
+              <span className="text-foreground">Tumbuh Bersama</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
               Mendukung kegiatan belajar mengajar yang nyaman, aktif, dan berorientasi prestasi.

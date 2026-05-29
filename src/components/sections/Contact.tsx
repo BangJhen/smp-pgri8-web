@@ -8,9 +8,9 @@ const Contact = () => (
       <ScrollReveal animation="slide-up">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-accent font-semibold text-sm uppercase tracking-wider">Hubungi Kami</p>
-          <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
-            Kunjungi <span className="text-primary">Sekolah Kami</span>
-          </h2>
+            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
+              Kunjungi <span className="text-foreground">Sekolah Kami</span>
+            </h2>
         </div>
       </ScrollReveal>
 

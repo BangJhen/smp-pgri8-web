@@ -46,7 +46,7 @@ const About = () => (
         <p className="text-accent font-semibold text-sm uppercase tracking-wider mb-3">Tentang Sekolah</p>
         <h2 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
           Sistem Pendidikan<br />
-          <span className="text-primary">yang Menginspirasi</span>
+          <span className="text-foreground">yang Menginspirasi</span>
         </h2>
         <p className="mt-5 text-muted-foreground leading-relaxed">
           SMP PGRI 8 Kota Bogor berkomitmen mencetak lulusan cerdas, berakhlak mulia,
