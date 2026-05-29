@@ -49,13 +49,13 @@ const Facilities = () => {
     <section id="fasilitas" className="section-pad bg-secondary/40">
       <div className="container-eduka">
         <ScrollReveal animation="slide-up">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-accent font-semibold text-sm uppercase tracking-wider">Fasilitas Sekolah</p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <p className="text-accent font-semibold text-xs md:text-sm uppercase tracking-wider">Fasilitas Sekolah</p>
+            <h2 className="mt-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-foreground">
               Lengkap untuk<br />
               <span className="text-foreground">Tumbuh Bersama</span>
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-3 md:mt-4 text-sm md:text-base text-muted-foreground">
               Mendukung kegiatan belajar mengajar yang nyaman, aktif, dan berorientasi prestasi.
             </p>
           </div>
@@ -63,8 +63,8 @@ const Facilities = () => {
 
         {/* Carousel */}
         <ScrollReveal animation="scale" delay={100}>
-          <div className="relative mb-12">
-            <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
+          <div className="relative mb-8 md:mb-12">
+            <div className="overflow-hidden rounded-xl md:rounded-2xl" ref={emblaRef}>
               <div className="flex">
                 {carouselImages.map((img, i) => (
                   <div key={i} className="flex-[0_0_100%] min-w-0">
@@ -79,7 +79,7 @@ const Facilities = () => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/80 to-transparent" />
-                      <div className="absolute bottom-6 left-6 text-primary-foreground font-display font-bold text-2xl">
+                      <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 text-primary-foreground font-display font-bold text-lg md:text-2xl">
                         {img.label}
                       </div>
                     </div>
@@ -91,32 +91,32 @@ const Facilities = () => {
             {/* Navigation Buttons */}
             <button
               onClick={scrollPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 hover:bg-white shadow-lg grid place-items-center text-primary hover:scale-110 transition-all"
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 h-8 w-8 md:h-12 md:w-12 rounded-full bg-white/90 hover:bg-white shadow-lg grid place-items-center text-primary hover:scale-110 transition-all"
               aria-label="Previous"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-4 w-4 md:h-6 md:w-6" />
             </button>
             <button
               onClick={scrollNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 hover:bg-white shadow-lg grid place-items-center text-primary hover:scale-110 transition-all"
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 h-8 w-8 md:h-12 md:w-12 rounded-full bg-white/90 hover:bg-white shadow-lg grid place-items-center text-primary hover:scale-110 transition-all"
               aria-label="Next"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-4 w-4 md:h-6 md:w-6" />
             </button>
           </div>
         </ScrollReveal>
 
         {/* Facilities list */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {facilities.map((f, idx) => (
             <ScrollReveal key={f.title} animation="slide-up" delay={idx * 50}>
-              <div className="flex gap-4 py-4 border-b border-border last:border-0 hover:bg-primary-soft/20 px-3 rounded-lg transition-all duration-300 group">
-                <div className="h-10 w-10 rounded-lg bg-primary-soft text-primary grid place-items-center shrink-0 group-hover:scale-110 transition-transform">
-                  <f.icon className="h-5 w-5" />
+              <div className="flex gap-3 md:gap-4 py-3 md:py-4 border-b border-border last:border-0 hover:bg-primary-soft/20 px-2 md:px-3 rounded-lg transition-all duration-300 group">
+                <div className="h-8 w-8 md:h-10 md:w-10 rounded-lg bg-primary-soft text-primary grid place-items-center shrink-0 group-hover:scale-110 transition-transform">
+                  <f.icon className="h-4 w-4 md:h-5 md:w-5" />
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground group-hover:text-primary transition-colors">{f.title}</div>
-                  <div className="text-sm text-muted-foreground mt-0.5">{f.desc}</div>
+                  <div className="font-semibold text-sm md:text-foreground group-hover:text-primary transition-colors">{f.title}</div>
+                  <div className="text-xs md:text-sm text-muted-foreground mt-0.5">{f.desc}</div>
                 </div>
               </div>
             </ScrollReveal>

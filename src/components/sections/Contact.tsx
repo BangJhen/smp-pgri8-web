@@ -6,9 +6,9 @@ const Contact = () => (
   <section id="kontak" className="section-pad">
     <div className="container-eduka">
       <ScrollReveal animation="slide-up">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-accent font-semibold text-sm uppercase tracking-wider">Hubungi Kami</p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
+          <p className="text-accent font-semibold text-xs md:text-sm uppercase tracking-wider">Hubungi Kami</p>
+            <h2 className="mt-2 text-2xl md:text-3xl lg:text-4xl font-extrabold text-foreground">
               Kunjungi <span className="text-foreground">Sekolah Kami</span>
             </h2>
         </div>

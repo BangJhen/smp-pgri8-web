@@ -45,9 +45,9 @@ const Gallery = () => {
     <section id="galeri" className="section-pad bg-secondary/40">
       <div className="container-eduka">
         <ScrollReveal animation="slide-up">
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <p className="text-accent font-semibold text-sm uppercase tracking-wider">Galeri Sekolah</p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-foreground">
+          <div className="text-center max-w-2xl mx-auto mb-6 md:mb-8">
+            <p className="text-accent font-semibold text-xs md:text-sm uppercase tracking-wider">Galeri Sekolah</p>
+            <h2 className="mt-2 text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-foreground">
               Momen Berharga Kami
             </h2>
           </div>
@@ -55,12 +55,12 @@ const Gallery = () => {
 
         {/* Filter Tabs */}
         <ScrollReveal animation="fade" delay={100}>
-          <div className="flex justify-center gap-2 mb-10 flex-wrap">
+          <div className="flex justify-center gap-2 mb-8 md:mb-10 flex-wrap">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveFilter(cat.id)}
-                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
+                className={`px-4 md:px-6 py-2 rounded-full font-semibold text-xs md:text-sm transition-all duration-300 ${
                   activeFilter === cat.id
                     ? "bg-primary text-primary-foreground shadow-lg scale-105"
                     : "bg-card text-muted-foreground hover:bg-primary-soft hover:text-primary hover:scale-105"
@@ -75,7 +75,7 @@ const Gallery = () => {
         {/* Gallery Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[200px] gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 auto-rows-[140px] sm:auto-rows-[160px] md:auto-rows-[180px] lg:auto-rows-[200px] gap-3 md:gap-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((it, i) => (
@@ -86,7 +86,7 @@ const Gallery = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className={`relative overflow-hidden rounded-2xl shadow-soft group cursor-pointer ${it.span}`}
+                className={`relative overflow-hidden rounded-xl md:rounded-2xl shadow-soft group cursor-pointer ${it.span}`}
                 onClick={() => handleImageClick(i)}
               >
                 <img 
@@ -96,7 +96,7 @@ const Gallery = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/80 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-primary-foreground font-display font-bold text-sm md:text-base">
+                <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4 text-primary-foreground font-display font-bold text-xs md:text-sm">
                   {it.label}
                 </div>
               </motion.div>

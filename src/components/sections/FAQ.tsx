@@ -36,7 +36,7 @@ const faqs = [
 const FAQ = () => (
   <section id="faq" className="section-pad">
     <div className="container-eduka">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
         {/* Left - Header */}
         <ScrollReveal animation="slide-up">
           <div className="lg:sticky lg:top-32">

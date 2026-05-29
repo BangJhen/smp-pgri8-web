@@ -10,7 +10,7 @@ const Hero = () => {
   const titleWords = ["Bangun", "Masa Depan", "Bersama Kami"];
 
   return (
-    <section id="beranda" className="relative overflow-hidden" style={{ minHeight: "620px", maxHeight: "780px", height: "80vh" }}>
+    <section id="beranda" className="relative overflow-hidden" style={{ minHeight: "400px", maxHeight: "550px", height: "70vh" }}>
       <motion.div className="absolute inset-0" style={{ y }}>
         <img
           src={heroImg}
@@ -22,18 +22,18 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-hero" />
       </motion.div>
 
-      <div className="relative container-eduka h-full flex items-center py-16 md:py-20">
+      <div className="relative container-eduka h-full flex items-center py-12 md:py-16 lg:py-20">
         <div className="max-w-2xl">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/60 text-xs font-semibold tracking-[0.2em] uppercase mb-6"
+            className="text-white/60 text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-4 md:mb-6"
           >
             SMP PGRI 8 — Kota Bogor
           </motion.p>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-[1.1] tracking-tight">
             {titleWords.map((word, i) => (
               <motion.span
                 key={i}
@@ -51,7 +51,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-6 text-white/70 text-base md:text-lg max-w-md leading-relaxed"
+            className="mt-4 md:mt-6 text-white/70 text-sm md:text-base lg:text-lg max-w-md leading-relaxed"
           >
             Sekolah menengah pertama modern di Kota Bogor yang mencetak generasi
             cerdas, berkarakter, dan siap menghadapi era digital.
@@ -61,14 +61,14 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-6 md:mt-8 flex flex-wrap gap-2 md:gap-3"
           >
-            <Button variant="hero" size="xl" asChild className="hover:scale-105 transition-transform">
+            <Button variant="hero" size="sm" asChild className="hover:scale-105 transition-transform md:text-base">
               <a href="/ppdb">
-                Daftar PPDB Online <ArrowRight className="h-5 w-5" />
+                Daftar PPDB Online <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="xl" asChild className="hover:scale-105 transition-transform">
+            <Button variant="heroOutline" size="sm" asChild className="hover:scale-105 transition-transform md:text-base">
               <a href="#profil">Tentang Kami</a>
             </Button>
           </motion.div>
@@ -81,8 +81,7 @@ const Hero = () => {
           viewBox="0 0 1440 70"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
-          className="w-full block"
-          style={{ height: "70px" }}
+          className="w-full block h-8 md:h-[50px]"
         >
           <path
             d="M0,35 C240,70 480,0 720,35 C960,70 1200,0 1440,35 L1440,70 L0,70 Z"
