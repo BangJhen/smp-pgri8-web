@@ -27,7 +27,7 @@ const PPDB = () => {
       <PPDBNavbar />
 
        {/* Page Hero */}
-       <section className="bg-gradient-to-br from-primary to-primary-deep text-primary-foreground py-14 md:py-20">
+       <section className="relative bg-gradient-to-br from-primary to-primary-deep text-primary-foreground py-14 md:py-20 overflow-hidden">
          <div className="container-eduka">
            <div className="flex items-center gap-2 mb-3">
             <span className="px-3 py-1 rounded-full bg-accent text-white text-xs font-bold uppercase">
@@ -45,7 +45,7 @@ const PPDB = () => {
           </p>
 
           {/* Quick info */}
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-wrap gap-4 pb-8">
             {[
               { icon: Calendar, label: "Periode Pendaftaran", value: "1 Juni – 30 Juli 2026" },
               { icon: Users, label: "Kuota Tersedia", value: "120 Siswa Baru" },
@@ -61,14 +61,14 @@ const PPDB = () => {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Wave */}
-      <div className="bg-gradient-to-br from-primary to-primary-deep">
-        <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: "50px" }}>
-          <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 L1440,50 L0,50 Z" fill="hsl(var(--background))" />
-        </svg>
-      </div>
+        {/* Wave — seamless transition ke section berikutnya */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 -mb-px">
+          <svg viewBox="0 0 1440 50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block h-8 md:h-[50px]">
+            <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 L1440,50 L0,50 Z" fill="hsl(var(--background))" />
+          </svg>
+        </div>
+      </section>
 
       {/* Steps */}
       <section className="py-12 bg-background">

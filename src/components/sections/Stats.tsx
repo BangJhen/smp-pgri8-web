@@ -81,29 +81,31 @@ const Stats = () => (
         </div>
 
         {/* Right: Bar Chart */}
-        <ScrollReveal animation="slide-left">
-          <div className="bg-card rounded-xl md:rounded-2xl p-4 md:p-6 border border-border shadow-card h-full">
-            <div className="flex items-start justify-between mb-4 md:mb-6">
+        <ScrollReveal animation="slide-left" className="h-full">
+          <div className="bg-card rounded-xl md:rounded-2xl p-4 md:p-6 border border-border shadow-card h-full flex flex-col">
+            <div className="flex items-start justify-between mb-4 md:mb-6 shrink-0">
               <div>
                 <h3 className="font-display font-bold text-base md:text-lg text-foreground">Distribusi Warga Sekolah</h3>
                 <p className="text-xs md:text-sm text-muted-foreground mt-1">Komposisi berdasarkan tingkatan dan divisi</p>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={320}>
-              <BarChart data={chartData} layout="vertical" margin={{ top: 8, right: 16, bottom: 8, left: 44 }}>
-                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }} />
-                <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }} width={44} />
-                <Tooltip
-                  contentStyle={{ borderRadius: '8px', border: '1px solid hsl(var(--border))', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
-                  cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
-                />
-                <Bar dataKey="value" radius={[0, 5, 5, 0]} barSize={22}>
-                  {chartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="flex-1 min-h-[280px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData} layout="vertical" margin={{ top: 4, right: 20, bottom: 4, left: 44 }}>
+                  <XAxis type="number" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} />
+                  <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} width={48} />
+                  <Tooltip
+                    contentStyle={{ borderRadius: '8px', border: '1px solid hsl(var(--border))', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+                    cursor={{ fill: 'hsl(var(--muted) / 0.3)' }}
+                  />
+                  <Bar dataKey="value" radius={[0, 6, 6, 0]} barSize={34}>
+                    {chartData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </ScrollReveal>
       </div>

@@ -1,16 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { SquigglyText } from "@/components/ui/squiggly-text";
 import heroImg from "@/assets/images/school/gambar-sekolah.jpg";
 
 const Hero = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 100]);
 
-  const titleWords = ["Bangun", "Masa Depan", "Bersama Kami"];
-
   return (
-    <section id="beranda" className="relative overflow-hidden" style={{ minHeight: "400px", maxHeight: "550px", height: "70vh" }}>
+    <section id="beranda" className="relative overflow-hidden h-[65vh] md:h-[85vh] min-h-[360px] md:min-h-[480px] max-h-[600px] md:max-h-[750px]">
       <motion.div className="absolute inset-0" style={{ y }}>
         <img
           src={heroImg}
@@ -23,7 +22,7 @@ const Hero = () => {
       </motion.div>
 
       <div className="relative container-eduka h-full flex items-center py-12 md:py-16 lg:py-20">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl w-full">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,18 +32,26 @@ const Hero = () => {
             SMP PGRI 8 — Kota Bogor
           </motion.p>
 
-          <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white leading-[1.1] tracking-tight">
-            {titleWords.map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
-                className={`block ${i === 2 ? "text-accent" : ""}`}
-              >
-                {word}
-              </motion.span>
-            ))}
+          <h1 className="text-[clamp(1.75rem,7.5vw,4.5rem)] font-extrabold text-white leading-[1.15] tracking-tight">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="block whitespace-nowrap"
+            >
+              Bangun{" "}
+              <SquigglyText steps={14} stepDuration={70} scale={[3, 6]} className="text-accent">
+                Masa Depan
+              </SquigglyText>
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="block"
+            >
+              Bersama Kami
+            </motion.span>
           </h1>
 
           <motion.p
@@ -75,8 +82,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Wave transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 z-10">
+      {/* Wave transition — seamless ke section berikutnya */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 -mb-px">
         <svg
           viewBox="0 0 1440 70"
           xmlns="http://www.w3.org/2000/svg"

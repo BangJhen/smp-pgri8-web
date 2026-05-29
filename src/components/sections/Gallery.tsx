@@ -1,24 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import news1 from "@/assets/images/news/news-1.jpg";
-import news2 from "@/assets/images/news/news-2.jpg";
-import news3 from "@/assets/images/news/news-3.jpg";
-import lib from "@/assets/images/facilities/facility-library.jpg";
-import lab from "@/assets/images/facilities/facility-lab.jpg";
-import building from "@/assets/images/facilities/facility-building.jpg";
+import { getGaleri, type Galeri } from "@/services/supabase/queries";
 import { Lightbox } from "@/components/ui/lightbox";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 type Category = "semua" | "kegiatan" | "fasilitas" | "prestasi";
 
-const items = [
-  { src: building, span: "md:col-span-2 md:row-span-2", label: "Gedung Sekolah", category: "fasilitas" as Category },
-  { src: news1, span: "", label: "Kegiatan Olahraga", category: "kegiatan" as Category },
-  { src: lib, span: "", label: "Perpustakaan", category: "fasilitas" as Category },
-  { src: news2, span: "", label: "Prestasi Akademik", category: "prestasi" as Category },
-  { src: lab, span: "", label: "Lab Komputer", category: "fasilitas" as Category },
-  { src: news3, span: "md:col-span-2", label: "Upacara Bendera", category: "kegiatan" as Category },
-];
+// Map category dari DB ke filter lokal (case-insensitive)
+const mapCategory = (title: string, desc: string | null): Category => {
+  const text = (title + " " + (desc ?? "")).toLowerCase();
+  if (text.includes("prestasi") || text.includes("juara") || text.includes("olimpiade")) return "prestasi";
+  if (text.includes("fasilitas") || text.includes("lab") || text.includes("perpustakaan") || text.includes("gedung")) return "fasilitas";
+  return "kegiatan";
+};
 
 const categories = [
   { id: "semua" as Category, label: "Semua" },
@@ -27,14 +21,40 @@ const categories = [
   { id: "prestasi" as Category, label: "Prestasi" },
 ];
 
+// Grid span pattern untuk layout masonry-like
+const spanPattern = [
+  "md:col-span-2 md:row-span-2",
+  "",
+  "",
+  "",
+  "",
+  "md:col-span-2",
+];
+
 const Gallery = () => {
+  const [galeri, setGaleri] = useState<(Galeri & { category: Category; span: string })[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<Category>("semua");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const filteredItems = activeFilter === "semua" 
-    ? items 
-    : items.filter(item => item.category === activeFilter);
+  useEffect(() => {
+    getGaleri(12)
+      .then((data) => {
+        const mapped = data.map((item, i) => ({
+          ...item,
+          category: mapCategory(item.title, item.description),
+          span: spanPattern[i % spanPattern.length],
+        }));
+        setGaleri(mapped);
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const filteredItems = activeFilter === "semua"
+    ? galeri
+    : galeri.filter((item) => item.category === activeFilter);
 
   const handleImageClick = (index: number) => {
     setLightboxIndex(index);
@@ -72,46 +92,54 @@ const Gallery = () => {
           </div>
         </ScrollReveal>
 
-        {/* Gallery Grid */}
-        <motion.div 
-          layout
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 auto-rows-[140px] sm:auto-rows-[160px] md:auto-rows-[180px] lg:auto-rows-[200px] gap-3 md:gap-4"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((it, i) => (
-              <motion.div
-                key={it.src}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-                className={`relative overflow-hidden rounded-xl md:rounded-2xl shadow-soft group cursor-pointer ${it.span}`}
-                onClick={() => handleImageClick(i)}
-              >
-                <img 
-                  src={it.src} 
-                  alt={it.label} 
-                  loading="lazy" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/80 via-transparent to-transparent" />
-                <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4 text-primary-foreground font-display font-bold text-xs md:text-sm">
-                  {it.label}
-                </div>
-              </motion.div>
+        {loading ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 auto-rows-[140px] sm:auto-rows-[160px] gap-3 md:gap-4">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="rounded-xl md:rounded-2xl bg-muted animate-pulse" />
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+        ) : (
+          <>
+            <motion.div
+              layout
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 auto-rows-[140px] sm:auto-rows-[160px] md:auto-rows-[180px] lg:auto-rows-[200px] gap-3 md:gap-4"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredItems.map((it, i) => (
+                  <motion.div
+                    key={it.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                    className={`relative overflow-hidden rounded-xl md:rounded-2xl shadow-soft group cursor-pointer ${it.span}`}
+                    onClick={() => handleImageClick(i)}
+                  >
+                    <img
+                      src={it.media_url}
+                      alt={it.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/80 via-transparent to-transparent" />
+                    <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4 text-primary-foreground font-display font-bold text-xs md:text-sm">
+                      {it.title}
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
 
-        {/* Lightbox */}
-        <Lightbox
-          images={filteredItems.map(item => item.src)}
-          initialIndex={lightboxIndex}
-          isOpen={lightboxOpen}
-          onClose={() => setLightboxOpen(false)}
-          alt="Galeri SMP PGRI 8"
-        />
+            <Lightbox
+              images={filteredItems.map((item) => item.media_url)}
+              initialIndex={lightboxIndex}
+              isOpen={lightboxOpen}
+              onClose={() => setLightboxOpen(false)}
+              alt="Galeri SMP PGRI 8"
+            />
+          </>
+        )}
       </div>
     </section>
   );

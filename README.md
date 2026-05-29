@@ -1,148 +1,320 @@
-# SMP PGRI 8 Kota Bogor - Website
+# SMP PGRI 8 Kota Bogor — Website Resmi
 
-Modern, responsive school information portal with admin content management system for SMP PGRI 8 Kota Bogor.
-
-## 🎯 Overview
-
-Website SMP PGRI 8 Kota Bogor is a comprehensive digital platform designed to:
-- Provide official school information to the public
-- Showcase school facilities, programs, and achievements
-- Enable online student registration (PPDB)
-- Manage school content through an admin dashboard
-
-## 🚀 Tech Stack
-
-- **Frontend:** React 18 + TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS + shadcn/ui
-- **Database:** Supabase (PostgreSQL)
-- **Form Validation:** Zod
-- **Data Fetching:** TanStack React Query
-- **Routing:** React Router DOM v6
-
-## 📋 Features
-
-### For Visitors
-- 🏠 Homepage with school overview
-- 📖 School profile (history, vision, mission)
-- 👨‍🏫 Teacher and staff directory
-- 🏢 Facilities information
-- 📰 News and announcements
-- 🖼️ Photo gallery
-- 📞 Contact information and location map
-- 📝 Online student registration (PPDB)
-
-### For Admin
-- 🔐 Secure login system
-- 📊 Admin dashboard
-- ✏️ Content management (news, gallery, teacher data)
-- 🖼️ Media upload and management
-- ⚙️ Website settings
-
-## 🛠️ Installation
-
-### Prerequisites
-- Node.js v16+ or Bun
-- npm or Bun package manager
-
-### Setup
-
-1. Clone the repository
-```bash
-git clone https://github.com/BangJhen/smp-pgri8-web.git
-cd smp-pgri8-web
-```
-
-2. Install dependencies
-```bash
-bun install
-# or
-npm install
-```
-
-3. Setup environment variables
-Create `.env.local` file:
-```env
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
-
-4. Run development server
-```bash
-bun run dev
-# or
-npm run dev
-```
-
-Visit `http://localhost:5173/`
-
-## 📦 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `bun run dev` | Start development server |
-| `bun run build` | Build for production |
-| `bun run preview` | Preview production build |
-| `bun run lint` | Run ESLint |
-| `bun run test` | Run tests |
-| `bun run test:watch` | Run tests in watch mode |
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── site/          # Page sections (Hero, About, News, etc)
-│   └── ui/            # shadcn/ui components
-├── pages/             # Page components
-├── integrations/
-│   └── supabase/      # Supabase client & types
-├── hooks/             # Custom React hooks
-├── lib/               # Utility functions
-├── assets/            # Images and static files
-└── App.tsx            # Main app component
-```
-
-## 🎨 Design System
-
-- **Primary Color:** Teal (#2D9B8F)
-- **Accent Color:** Orange (#FF8C42)
-- **Typography:** Poppins (headings) + Inter (body)
-- **Responsive:** Mobile-first design
-
-## 🔒 Security Features
-
-- HTTPS/SSL encryption
-- Secure admin authentication
-- Input validation with Zod
-- CSRF protection
-- Regular data backups
-
-## 📊 Performance
-
-- Page load time: < 3 seconds
-- Supports 100+ concurrent visitors
-- Optimized images and assets
-- Efficient database queries
-
-## 🤝 Contributing
-
-This is a school project developed by Kelompok 14:
-- Nayla Shifa Aurelia (M0405241060)
-- Hafidz Syadi Ismallah Hidayat (M0405241061)
-- Gian Padang Andrury Asbi (M0405241063)
-
-## 📄 License
-
-This project is proprietary to SMP PGRI 8 Kota Bogor.
-
-## 📞 Contact
-
-**SMP PGRI 8 Kota Bogor**
-- 📍 Jl. PGRI No. 8, Kota Bogor
-- 📧 info@smppgri8bogor.sch.id
-- 📱 (0251) 123-4567
+Website informasi sekolah modern untuk SMP PGRI 8 Kota Bogor, dibangun dengan React + TypeScript + Supabase.
 
 ---
 
-Built with ❤️ for education in Indonesia
+## Tech Stack
+
+| Layer | Teknologi |
+|-------|-----------|
+| Frontend | React 18 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS v3 + shadcn/ui |
+| Database & Storage | Supabase (PostgreSQL + Storage) |
+| Animasi | Framer Motion |
+| Form Validation | Zod |
+| Routing | React Router DOM v6 |
+| Charts | Recharts |
+| Maps | React Leaflet |
+
+---
+
+## Struktur Project
+
+```
+src/
+├── assets/
+│   └── images/
+│       ├── about/          # Foto halaman profil
+│       ├── facilities/     # Foto fasilitas (fallback lokal)
+│       ├── hero/           # Foto hero section
+│       ├── news/           # Foto berita (fallback lokal)
+│       └── school/         # Foto gedung sekolah
+├── components/
+│   ├── common/             # Komponen reusable (NavLink)
+│   ├── forms/              # Form PPDB
+│   ├── layout/             # Navbar, TopBar, Footer, PPDBNavbar
+│   ├── sections/           # Section halaman utama
+│   │   ├── Hero.tsx
+│   │   ├── About.tsx
+│   │   ├── Stats.tsx
+│   │   ├── News.tsx        # ← data dari Supabase (tabel: berita)
+│   │   ├── Facilities.tsx  # ← data dari Supabase (tabel: fasilitas)
+│   │   ├── Gallery.tsx     # ← data dari Supabase (tabel: galeri)
+│   │   ├── Contact.tsx     # ← data dari Supabase (tabel: website_config)
+│   │   └── FAQ.tsx
+│   └── ui/                 # shadcn/ui + custom components
+├── hooks/                  # Custom hooks (useNavbarTop, useScrollTrigger, dll)
+├── lib/                    # Utility (cn, dll)
+├── pages/                  # Halaman (Index, PPDB, NotFound)
+├── services/
+│   └── supabase/
+│       ├── client.ts       # Supabase client instance
+│       ├── queries.ts      # Query functions (getBerita, getFasilitas, dll)
+│       └── types.ts        # TypeScript types untuk semua tabel
+└── styles/
+    └── index.css           # Global styles + Tailwind directives
+```
+
+---
+
+## Setup & Instalasi
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/BangJhen/smp-pgri8-web.git
+cd smp-pgri8-web
+npm install
+```
+
+### 2. Konfigurasi Environment
+
+Buat file `.env` di root project:
+
+```env
+VITE_SUPABASE_PROJECT_ID="your_project_id"
+VITE_SUPABASE_PUBLISHABLE_KEY="your_publishable_key"
+VITE_SUPABASE_URL="https://your_project_id.supabase.co"
+```
+
+### 3. Jalankan Development Server
+
+```bash
+npm run dev
+```
+
+Buka `http://localhost:5173`
+
+---
+
+## Perintah Tersedia
+
+| Perintah | Keterangan |
+|----------|------------|
+| `npm run dev` | Development server |
+| `npm run build` | Build production |
+| `npm run preview` | Preview hasil build |
+| `npm run lint` | Jalankan ESLint |
+| `npm run test` | Jalankan tests |
+
+---
+
+## Konfigurasi Supabase
+
+### Tabel Database
+
+| Tabel | Keterangan | Kolom Penting |
+|-------|------------|---------------|
+| `berita` | Artikel berita & pengumuman | title, slug, excerpt, content, category, thumbnail_url, status, published_at |
+| `fasilitas` | Data fasilitas sekolah | name, description, image_url |
+| `galeri` | Foto & video kegiatan | title, media_url, media_type, event_date |
+| `guru_staff` | Data guru dan staff | full_name, position, type, photo_url, bio |
+| `dokumen` | Dokumen & file PDF | title, file_url, file_type |
+| `website_config` | Konfigurasi website (1 row) | school_name, vision, mission, address, phone, email |
+| `pendaftaran_ppdb` | Data pendaftar PPDB | nama_lengkap, nisn, tanggal_lahir, jenis_kelamin, asal_sekolah, status |
+
+### Storage Buckets
+
+| Bucket | Isi | Maks | Format |
+|--------|-----|------|--------|
+| `berita` | Thumbnail berita | 5 MB | jpg, png, webp, gif |
+| `fasilitas` | Foto fasilitas | 5 MB | jpg, png, webp, gif |
+| `galeri` | Foto/video kegiatan | 5 MB | jpg, png, webp, gif, mp4 |
+| `guru-staff` | Foto profil guru & staff | 5 MB | jpg, png, webp |
+| `dokumen` | File dokumen | 10 MB | pdf |
+
+URL format file yang tersimpan di Storage:
+```
+https://<project_id>.supabase.co/storage/v1/object/public/<bucket>/<filename>
+```
+
+---
+
+## Cara Ganti ke Supabase Project Baru
+
+Ikuti langkah berikut jika ingin pindah ke project Supabase yang berbeda:
+
+### Langkah 1 — Update `.env`
+
+```env
+VITE_SUPABASE_PROJECT_ID="project_id_baru"
+VITE_SUPABASE_PUBLISHABLE_KEY="publishable_key_baru"
+VITE_SUPABASE_URL="https://project_id_baru.supabase.co"
+```
+
+### Langkah 2 — Buat tabel di project baru
+
+Jalankan SQL berikut di Supabase Dashboard → SQL Editor:
+
+```sql
+-- Enum types
+CREATE TYPE berita_status AS ENUM ('draft', 'published');
+CREATE TYPE media_type AS ENUM ('photo', 'video');
+CREATE TYPE staff_type AS ENUM ('guru', 'staff');
+
+-- Tabel berita
+CREATE TABLE berita (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title text NOT NULL,
+  slug text NOT NULL UNIQUE,
+  excerpt text,
+  content text NOT NULL,
+  category text,
+  thumbnail_url text,
+  status berita_status NOT NULL DEFAULT 'draft',
+  published_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Tabel fasilitas
+CREATE TABLE fasilitas (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  name text NOT NULL,
+  description text,
+  image_url text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Tabel galeri
+CREATE TABLE galeri (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title text NOT NULL,
+  description text,
+  media_url text NOT NULL,
+  media_type media_type NOT NULL,
+  event_date date,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Tabel guru_staff
+CREATE TABLE guru_staff (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  full_name text NOT NULL,
+  position text NOT NULL,
+  type staff_type NOT NULL,
+  photo_url text,
+  bio text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Tabel dokumen
+CREATE TABLE dokumen (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title text NOT NULL,
+  file_url text NOT NULL,
+  file_type text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+-- Tabel website_config (singleton — hanya 1 row)
+CREATE TABLE website_config (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  school_name text,
+  history text,
+  vision text,
+  mission text,
+  address text,
+  phone text,
+  email text,
+  map_embed_url text,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE UNIQUE INDEX website_config_singleton ON website_config ((true));
+
+-- Tabel pendaftaran_ppdb
+CREATE TABLE pendaftaran_ppdb (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  nama_lengkap text NOT NULL,
+  nisn text,
+  tempat_lahir text NOT NULL,
+  tanggal_lahir date NOT NULL,
+  jenis_kelamin text NOT NULL CHECK (jenis_kelamin IN ('L', 'P')),
+  agama text NOT NULL,
+  alamat text NOT NULL,
+  asal_sekolah text NOT NULL,
+  nama_orangtua text NOT NULL,
+  no_hp text NOT NULL,
+  email text,
+  status text NOT NULL DEFAULT 'pending',
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+```
+
+### Langkah 3 — Buat Storage Buckets
+
+Jalankan SQL berikut di SQL Editor:
+
+```sql
+INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types) VALUES
+  ('berita',     'berita',     true, 5242880,  '{image/jpeg,image/png,image/webp,image/gif}'),
+  ('fasilitas',  'fasilitas',  true, 5242880,  '{image/jpeg,image/png,image/webp,image/gif}'),
+  ('galeri',     'galeri',     true, 5242880,  '{image/jpeg,image/png,image/webp,image/gif,video/mp4}'),
+  ('guru-staff', 'guru-staff', true, 5242880,  '{image/jpeg,image/png,image/webp}'),
+  ('dokumen',    'dokumen',    true, 10485760, '{application/pdf}')
+ON CONFLICT (id) DO NOTHING;
+```
+
+### Langkah 4 — Update MCP (opsional, untuk development)
+
+Edit `~/.config/opencode/opencode.json`:
+
+```json
+{
+  "mcp": {
+    "supabase": {
+      "type": "remote",
+      "url": "https://mcp.supabase.com/mcp?project_ref=PROJECT_ID_BARU",
+      "enabled": true
+    }
+  }
+}
+```
+
+Lalu autentikasi ulang:
+```bash
+opencode mcp auth supabase
+```
+
+### Langkah 5 — Rebuild
+
+```bash
+npm run build
+```
+
+---
+
+## Upload Gambar ke Storage
+
+Upload via Supabase Dashboard → Storage → pilih bucket → Upload file.
+
+Atau via curl (gunakan service_role key):
+
+```bash
+curl -X POST "https://<project_id>.supabase.co/storage/v1/object/<bucket>/<filename>" \
+  -H "Authorization: Bearer <service_role_key>" \
+  -H "Content-Type: image/jpeg" \
+  --data-binary "@/path/to/file.jpg"
+```
+
+Setelah upload, simpan URL ke kolom yang sesuai di tabel:
+```
+https://<project_id>.supabase.co/storage/v1/object/public/<bucket>/<filename>
+```
+
+---
+
+## Desain
+
+- **Primary:** `#015C4A` (hijau tua)
+- **Accent:** `#DAA428` (emas)
+- **Font:** Inter (body) + display font (heading)
+- **Responsive:** Mobile-first
+
+---
+
+## Lisensi
+
+Proprietary — SMP PGRI 8 Kota Bogor.
